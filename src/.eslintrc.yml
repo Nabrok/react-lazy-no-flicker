@@ -17,6 +17,9 @@ plugins:
   - react-hooks
   - babel
   - jest
+settings:
+  react:
+    version: "detect"
 globals:
   module: true
   require: true

@@ -4,9 +4,9 @@
   "description": "Prevent flickering of loading fallback when using react suspense/lazy",
   "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build:cjs": "rimraf lib && babel src -d lib",
-    "build:es": "rimraf es && cross-env ES_MODULES=true babel src -d es",
+    "test": "jest",
+    "build:cjs": "rimraf lib && babel src -d lib --ignore '**/*.test.js'",
+    "build:es": "rimraf es && cross-env ES_MODULES=true babel src -d es --ignore '**/*.test.js'",
     "build": "npm run build:cjs && npm run build:es",
     "preversion": "git-branch-is master",
     "version": "version-changelog CHANGELOG.md && changelog-verify CHANGELOG.md && git add CHANGELOG.md || git reset --hard",
@@ -21,15 +21,21 @@
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/preset-env": "^7.6.0",
     "@babel/preset-react": "^7.0.0",
+    "@testing-library/jest-dom": "^4.1.0",
+    "@testing-library/react": "^9.1.4",
     "babel-eslint": "^10.0.3",
+    "babel-jest": "^24.9.0",
     "changelog-verify": "^1.1.2",
     "cross-env": "^5.2.1",
     "eslint": "^6.4.0",
     "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-jest": "^22.17.0",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
     "git-branch-is": "^3.0.0",
+    "jest": "^24.9.0",
     "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "rimraf": "^3.0.0",
     "version-changelog": "^3.1.1"
   },
@@ -39,6 +45,7 @@
     "lib"
   ],
   "peerDependencies": {
-    "react": "^16.9.0"
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
   }
 }
