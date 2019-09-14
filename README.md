@@ -23,7 +23,9 @@ function App() {
 
 	return <div>
 		<button onClick={() => setShow(current => ! current)}>Toggle Component</button>
-		{ show && <MyComponent /> }
+		<React.Suspense fallback={<Loading />}>
+			{ show && <MyComponent /> }
+		</React.Suspense>
 	</div>;
 }
 ```
