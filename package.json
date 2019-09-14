@@ -2,10 +2,43 @@
   "name": "react-lazy-no-flicker",
   "version": "0.0.0",
   "description": "Prevent flickering of loading fallback when using react suspense/lazy",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:cjs": "rimraf lib && babel src -d lib",
+    "build:es": "rimraf es && cross-env ES_MODULES=true babel src -d es",
+    "build": "npm run build:cjs && npm run build:es",
+    "preversion": "git-branch-is master",
+    "version": "version-changelog CHANGELOG.md && changelog-verify CHANGELOG.md && git add CHANGELOG.md || git reset --hard",
+    "postversion": "git push --follow-tags",
+    "prepublishOnly": "npm run build"
   },
   "author": "James Orr",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.6.0",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.3",
+    "changelog-verify": "^1.1.2",
+    "cross-env": "^5.2.1",
+    "eslint": "^6.4.0",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^2.0.1",
+    "git-branch-is": "^3.0.0",
+    "react": "^16.9.0",
+    "rimraf": "^3.0.0",
+    "version-changelog": "^3.1.1"
+  },
+  "module": "es/index.js",
+  "files": [
+    "es",
+    "lib"
+  ],
+  "peerDependencies": {
+    "react": "^16.9.0"
+  }
 }
