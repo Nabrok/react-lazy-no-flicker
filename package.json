@@ -13,7 +13,11 @@
     "postversion": "git push --follow-tags",
     "prepublishOnly": "npm run build"
   },
-  "author": "James Orr",
+  "author": "Nabrok",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nabrok/react-lazy-no-flicker"
+  },
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.6.0",
