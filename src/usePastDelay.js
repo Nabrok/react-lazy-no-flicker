@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 /**
  * Hook that indicates if a certain amount of time has passed since the component was mounted.
  * @param {Number} [delay=200] - The delay time in ms, defaults to 200
+ * @returns {boolean}
+ * @memberof module:react-lazy-no-flicker
  * 
  * @example
  * function Loading() {
