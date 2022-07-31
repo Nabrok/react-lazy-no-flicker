@@ -1,6 +1,5 @@
 env:
-  browser: true
-  es6: true
+  node: true
 extends:
   - 'eslint:recommended'
   - 'plugin:react/recommended'
@@ -28,13 +27,17 @@ rules:
   getter-return:
     - error
     - allowImplicit: true
+ignorePatterns:
+  - "types"
+  - "lib"
+  - "es"
 overrides:
   - files:
-      - "src/**/*.js"
-      - "__tests__/**/*.js"
-      - "__fixtures__/**/*.js"
       - "*.ts"
       - "*.tsx"
+    env:
+      browser: true
+      es6: true
     parserOptions:
       ecmaFeatures:
         jsx: true
@@ -48,7 +51,6 @@ overrides:
       react-hooks/rules-of-hooks: error
       react-hooks/exhaustive-deps: warn
   - files:
-      - "*.test.js"
       - "*.test.ts"
       - "*.test.tsx"
     env:

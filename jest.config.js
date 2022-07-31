@@ -16,5 +16,10 @@ module.exports = {
 		"@testing-library/jest-dom/extend-expect"
 	],
 	preset: "ts-jest/presets/js-with-ts",
-	testEnvironment: "jsdom"
+	testEnvironment: "jsdom",
+	globals: {
+		'ts-jest': {
+			tsconfig: 'tsconfig.test.json'
+		}
+	}
 };
