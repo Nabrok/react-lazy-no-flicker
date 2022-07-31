@@ -1,6 +1,6 @@
 {
   "name": "react-lazy-no-flicker",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "Prevent flickering of loading fallback when using react suspense/lazy",
   "main": "lib/index.js",
   "types": "types/index.d.ts",
