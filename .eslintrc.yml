@@ -1,0 +1,60 @@
+env:
+  browser: true
+  es6: true
+extends:
+  - 'eslint:recommended'
+  - 'plugin:react/recommended'
+  - 'plugin:jest/recommended'
+parser: "@typescript-eslint/parser"
+parserOptions:
+  ecmaFeatures:
+    experimentalObjectRestSpread: true
+    jsx: true
+  sourceType: module
+plugins:
+  - "@typescript-eslint"
+rules:
+  indent:
+    - error
+    - tab
+    - SwitchCase: 1
+  quotes:
+    - off
+    - double
+  semi:
+    - error
+    - always
+    - omitLastInOneLineBlock: true
+  getter-return:
+    - error
+    - allowImplicit: true
+overrides:
+  - files:
+      - "src/**/*.js"
+      - "__tests__/**/*.js"
+      - "__fixtures__/**/*.js"
+    parserOptions:
+      ecmaFeatures:
+        jsx: true
+    plugins:
+      - react
+      - react-hooks
+    settings:
+      react:
+        version: "detect"
+    rules:
+      react-hooks/rules-of-hooks: error
+      react-hooks/exhaustive-deps: warn
+  - files:
+      - "*.test.js"
+      - "*.test.ts"
+      - "*.test.tsx"
+    env:
+      jest/globals: true
+    plugins:
+      - jest
+    extends:
+      - "plugin:jest/recommended"
+    rules:
+      react/prop-types: off
+      react/display-name: off
