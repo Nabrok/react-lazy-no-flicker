@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render, wait } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 
 import lazy from '../src/lazy';
 import usePastDelay from '../src/usePastDelay';
@@ -17,10 +17,10 @@ function Loader({children}) {
 }
 
 test('quick load (no fallback)', async () => {
-	const Comp = lazy(() => new Promise(resolve => setTimeout(resolve, 100)).then(() => import('__fixtures__/Loaded')));
+	const Comp = lazy(() => new Promise(resolve => setTimeout(resolve, 100)).then(() => import('../__fixtures__/Loaded')));
 	const { container, getByTestId, queryByTestId } = render(<Loader><Comp /></Loader>);
 	expect(container).toBeEmptyDOMElement();
-	await wait(() => {
+	await waitFor(() => {
 		const loading = queryByTestId('loading');
 		expect(loading).toBeNull();
 		getByTestId('loaded');
@@ -29,7 +29,7 @@ test('quick load (no fallback)', async () => {
 
 test('medium load (minimum fallback)', async () => {
 	const start_time = Date.now();
-	const Comp = lazy(() => new Promise(resolve => setTimeout(resolve, 250)).then(() => import('__fixtures__/Loaded')));
+	const Comp = lazy(() => new Promise(resolve => setTimeout(resolve, 250)).then(() => import('../__fixtures__/Loaded')));
 	const { findByTestId } = render(<Loader><Comp /></Loader>);
 	await findByTestId('loading');
 	await findByTestId('loaded');
@@ -40,7 +40,7 @@ test('medium load (minimum fallback)', async () => {
 
 test('long load (extended fallback)', async () => {
 	const start_time = Date.now();
-	const Comp = lazy(() => new Promise(resolve => setTimeout(resolve, 1000)).then(() => import('__fixtures__/Loaded')));
+	const Comp = lazy(() => new Promise(resolve => setTimeout(resolve, 1000)).then(() => import('../__fixtures__/Loaded')));
 	const { findByTestId } = render(<Loader><Comp /></Loader>);
 	await findByTestId('loading');
 	await findByTestId('loaded');

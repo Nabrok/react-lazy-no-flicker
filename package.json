@@ -23,7 +23,7 @@
   "license": "ISC",
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^9.1.4",
+    "@testing-library/react": "^13.3.0",
     "@typescript-eslint/eslint-plugin": "^5.31.0",
     "changelog-verify": "^1.1.2",
     "eslint": "^8.20.0",
@@ -34,8 +34,8 @@
     "git-branch-is": "^4.0.0",
     "jest": "^28.1.3",
     "jest-environment-jsdom": "^28.1.3",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "rimraf": "^3.0.2",
     "ts-jest": "^28.0.7",
     "typescript": "^4.7.4",
@@ -48,7 +48,7 @@
     "types"
   ],
   "peerDependencies": {
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "react": "^16.9.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.9.0 || ^17.0.0 || ^18.0.0"
   }
 }
