@@ -20,7 +20,7 @@ function Loader({children}) {
 test('quick load (no fallback)', async () => {
 	const Comp = lazy(() => new Promise(resolve => setTimeout(resolve, 100)).then(() => import('__fixtures__/Loaded')));
 	const { container, getByTestId, queryByTestId } = render(<Loader><Comp /></Loader>);
-	expect(container).toBeEmpty();
+	expect(container).toBeEmptyDOMElement();
 	await wait(() => {
 		const loading = queryByTestId('loading');
 		expect(loading).toBeNull();
