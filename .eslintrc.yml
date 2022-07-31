@@ -33,6 +33,8 @@ overrides:
       - "src/**/*.js"
       - "__tests__/**/*.js"
       - "__fixtures__/**/*.js"
+      - "*.ts"
+      - "*.tsx"
     parserOptions:
       ecmaFeatures:
         jsx: true

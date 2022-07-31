@@ -7,9 +7,16 @@
 		"declarationDir": "./types",
 		"moduleResolution": "node",
 		"allowJs": true,
-		"jsx": "react"
+		"jsx": "react",
+		"baseUrl": ".",
+		"paths": {
+			"__fixtures__/*": [ "__fixtures__/*" ],
+			"*": [ "src/*" ]
+		}
 	},
 	"include": [
-		"src/**/*"
+		"src/**/*",
+		"__fixtures__/**/*",
+		"__tests__/**/*"
 	]
 }
