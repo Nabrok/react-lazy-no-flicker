@@ -2,18 +2,12 @@ import * as React from 'react';
 import { render, waitFor } from '@testing-library/react';
 
 import lazy from '../src/lazy';
-import usePastDelay from '../src/usePastDelay';
-
-function Loading() {
-	const past_delay = usePastDelay();
-	if (! past_delay) return null;
-	return <div data-testid="loading">Loading ...</div>;
-}
+import Suspense from '../src/Suspense';
 
 function Loader({children}) {
-	return <React.Suspense fallback={<Loading/>}>
+	return <Suspense fallback={<div data-testid="loading">Loading ...</div>}>
 		{children}
-	</React.Suspense>;
+	</Suspense>;
 }
 
 test('quick load (no fallback)', async () => {

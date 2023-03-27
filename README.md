@@ -7,12 +7,10 @@ While purposely making a load take longer is a bit counter-intuitive, I think it
 ## Usage
 
 ```javascript
-import React, { useState } from 'react';
-import { usePastDelay, lazy } from 'react-lazy-no-flicker';
+import { useState } from 'react';
+import { lazy, Suspense } from 'react-lazy-no-flicker';
 
 function Loading() {
-	const past_delay = usePastDelay();
-	if (! past_delay) return null;
 	return <div>Loading ...</div>;
 }
 
@@ -23,18 +21,16 @@ function App() {
 
 	return <div>
 		<button onClick={() => setShow(current => ! current)}>Toggle Component</button>
-		<React.Suspense fallback={<Loading />}>
+		<Suspense fallback={<Loading />}>
 			{ show && <MyComponent /> }
-		</React.Suspense>
+		</Suspense>
 	</div>;
 }
 ```
 
-## usePastDelay
-
-This hook takes one optional parameter for the amount of time to delay before it returns true.  This defaults to 200ms.  If you change this value be sure to modify `time_before_fallback` option in lazy to match.
-
 ## lazy
+
+Wrapper around React.lazy.
 
 Takes a function that performs the `import` call as the first argument.  Second argument is an optional options object with the following defaults ...
 
@@ -43,7 +39,19 @@ Takes a function that performs the `import` call as the first argument.  Second 
 	time_before_fallback: 200, // The amount of time in ms before the loading fallback is displayed, should match parameter given to usePastDelay
 	minimum_fallback_time: 500 // The minimum amount of time in ms the loading fallback will be displayed for
 }
+
 ```
+
+## Suspense
+
+Wrapper around React.Suspense which prevents the fallback component from being rendered until the delay has passed.
+
+Adds an optional prop for `delay`, which defaults to 200.  This should match the `time_before_fallback` value given to `lazy`.
+
+## usePastDelay
+
+This hook takes one optional parameter for the amount of time to delay before it returns true.  This defaults to 200ms.  If you change this value be sure to modify `time_before_fallback` option in lazy to match.
+
 
 - Any imports taking less than `time_before_fallback` to load will be displayed immediately after loading.
 - Any imports taking more than `time_before_fallback` to load will display the fallback for at least `minimum_fallback_time` before returning.

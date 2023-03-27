@@ -48,8 +48,10 @@ overrides:
       react:
         version: "detect"
     rules:
-      react-hooks/rules-of-hooks: error
-      react-hooks/exhaustive-deps: warn
+      react/react-in-jsx-scope: off
+    extends:
+      - 'plugin:react/recommended'
+      - 'plugin:react-hooks/recommended'
   - files:
       - "*.test.ts"
       - "*.test.tsx"

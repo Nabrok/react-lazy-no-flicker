@@ -7,7 +7,7 @@
 		"declarationDir": "./types",
 		"moduleResolution": "node",
 		"allowJs": true,
-		"jsx": "react"
+		"jsx": "react-jsx"
 	},
 	"include": [
 		"src/**/*",
